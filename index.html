@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Forms of Emotion — selected digital works by Cael Khin exploring line, repetition, stillness, and movement.">
+  <meta name="description" content="Forms of Emotion — selected digital works by Cael Khin, including Atom, Thoughts Without Rest, and the Misery in Blue series.">
   <meta name="theme-color" content="#0b0b0a">
   <title>Forms of Emotion — Cael Khin</title>
 
@@ -293,6 +293,90 @@
       grid-row: 1;
     }
 
+    .series {
+      margin-top: clamp(9rem, 18vw, 18rem);
+      padding-top: clamp(3rem, 6vw, 6rem);
+      border-top: 1px solid var(--line);
+    }
+
+    .series-intro {
+      display: grid;
+      grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
+      gap: clamp(2rem, 7vw, 8rem);
+      align-items: start;
+    }
+
+    .series-kicker {
+      margin: 0 0 1.2rem;
+      color: var(--accent);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .series-title {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 8vw, 8.5rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.88;
+    }
+
+    .series-description {
+      max-width: 48rem;
+      margin: 3rem 0 0;
+      color: #cbc5ba;
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+      line-height: 1.7;
+    }
+
+    .series-grid {
+      margin-top: clamp(5rem, 11vw, 10rem);
+      columns: 2;
+      column-gap: clamp(1.5rem, 4vw, 4.5rem);
+    }
+
+    .study-card {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 clamp(3rem, 7vw, 7rem);
+      break-inside: avoid;
+    }
+
+    .study-link {
+      display: block;
+      overflow: hidden;
+      background: #fff;
+      text-decoration: none;
+    }
+
+    .study-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .study-link:hover img,
+    .study-link:focus-visible img {
+      transform: scale(1.012);
+    }
+
+    .study-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .study-caption span:first-child { color: var(--paper); }
+
     .motion-control {
       margin-top: 2.2rem;
       padding: 0;
@@ -428,6 +512,10 @@
       }
 
       .work-number { margin-bottom: 1.7rem; }
+
+      .series-intro { grid-template-columns: 1fr; }
+      .series-grid { columns: 1; }
+
       .about { grid-template-columns: 1fr; }
       .about .section-heading { margin-bottom: 1rem; }
       .about-note { margin-left: 0; }
@@ -551,6 +639,206 @@
           </button>
         </div>
       </article>
+
+      <section class="series" aria-labelledby="misery-heading">
+        <div class="series-intro">
+          <p class="work-number">Works No. 03—10</p>
+
+          <div>
+            <p class="series-kicker">Project · Eight works</p>
+            <h3 class="series-title" id="misery-heading">Misery in Blue</h3>
+            <p class="series-description">
+              This series investigates variation within a fixed visual language. While each piece shares a common structural foundation, subtle departures in form and expression mark distinct emotional and psychological states. The collection considers how repetition can function as a record of change. Rather than presenting singular conclusions, the works remain open-ended, reflecting moments of tension, uncertainty, reflection, and transformation. Viewed collectively, the series forms an extended study of emotional continuity and evolution over time.
+            </p>
+          </div>
+        </div>
+
+        <div class="series-grid">
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-01.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study I, full size"
+          >
+            <img
+              src="images/misery-in-blue-01.jpg"
+              alt="Misery in Blue, Study I: an abstract black contour drawing of interlocking organic forms on white"
+              width="1546"
+              height="1741"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study I</span>
+            <span>No. 03</span>
+          </figcaption>
+        </figure>
+
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-02.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study II, full size"
+          >
+            <img
+              src="images/misery-in-blue-02.jpg"
+              alt="Misery in Blue, Study II: an abstract black contour drawing of nested loops and rounded curls on white"
+              width="1699"
+              height="2048"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study II</span>
+            <span>No. 04</span>
+          </figcaption>
+        </figure>
+
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-03.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study III, full size"
+          >
+            <img
+              src="images/misery-in-blue-03.jpg"
+              alt="Misery in Blue, Study III: paired abstract spiral forms drawn in a fine black contour on white"
+              width="1679"
+              height="1703"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study III</span>
+            <span>No. 05</span>
+          </figcaption>
+        </figure>
+
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-04.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study IV, full size"
+          >
+            <img
+              src="images/misery-in-blue-04.jpg"
+              alt="Misery in Blue, Study IV: two clustered recursive forms drawn in a fine black contour on white"
+              width="1630"
+              height="1902"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study IV</span>
+            <span>No. 06</span>
+          </figcaption>
+        </figure>
+
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-05.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study V, full size"
+          >
+            <img
+              src="images/misery-in-blue-05.jpg"
+              alt="Misery in Blue, Study V: paired looping shapes with asymmetric curves in black contour on white"
+              width="1674"
+              height="1442"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study V</span>
+            <span>No. 07</span>
+          </figcaption>
+        </figure>
+
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-06.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study VI, full size"
+          >
+            <img
+              src="images/misery-in-blue-06.jpg"
+              alt="Misery in Blue, Study VI: three stacked looping organic forms in black contour on white"
+              width="1456"
+              height="2048"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study VI</span>
+            <span>No. 08</span>
+          </figcaption>
+        </figure>
+
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-07.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study VII, full size"
+          >
+            <img
+              src="images/misery-in-blue-07.jpg"
+              alt="Misery in Blue, Study VII: three sweeping ribbon-like contours arranged vertically on white"
+              width="1457"
+              height="2048"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study VII</span>
+            <span>No. 09</span>
+          </figcaption>
+        </figure>
+
+        <figure class="study-card">
+          <a
+            class="study-link"
+            href="images/misery-in-blue-08.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Misery in Blue, Study VIII, full size"
+          >
+            <img
+              src="images/misery-in-blue-08.jpg"
+              alt="Misery in Blue, Study VIII: broad winding black contours forming an open vertical composition on white"
+              width="1397"
+              height="2048"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+          <figcaption class="study-caption">
+            <span>Study VIII</span>
+            <span>No. 10</span>
+          </figcaption>
+        </figure>
+        </div>
+      </section>
     </section>
 
     <section class="about" id="about" aria-labelledby="about-heading">
