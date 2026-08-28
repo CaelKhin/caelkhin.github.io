@@ -2,154 +2,613 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Forms of Emotion — selected digital works by Cael Khin exploring line, repetition, stillness, and movement.">
+  <meta name="theme-color" content="#0b0b0a">
   <title>Forms of Emotion — Cael Khin</title>
 
   <style>
-    body {
-      margin: 0;
-      background: white;
-      color: #111;
-      font-family: Arial, Helvetica, sans-serif;
+    :root {
+      --ink: #0b0b0a;
+      --surface: #11110f;
+      --paper: #f1ede4;
+      --muted: #a7a197;
+      --line: rgba(241, 237, 228, 0.16);
+      --accent: #c4a66f;
+      --page: min(92vw, 1440px);
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
     }
 
-    header {
-      padding: 40px 6%;
-      display: flex;
-      justify-content: space-between;
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--ink);
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 78% 4%, rgba(196, 166, 111, 0.08), transparent 24rem),
+        var(--ink);
+      color: var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--ink);
+    }
+
+    a { color: inherit; }
+    img, video { max-width: 100%; }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      z-index: 100;
+      padding: 0.7rem 1rem;
+      background: var(--paper);
+      color: var(--ink);
+      transform: translateY(-200%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(11, 11, 10, 0.82);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      width: var(--page);
+      min-height: 76px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
+      border-bottom: 1px solid var(--line);
     }
 
     .artist-name {
-      font-size: 18px;
+      justify-self: start;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .edition {
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    nav {
+      justify-self: end;
+      display: flex;
+      gap: clamp(1rem, 2.3vw, 2.5rem);
     }
 
     nav a {
-      color: #111;
+      color: var(--muted);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
       text-decoration: none;
-      margin-left: 30px;
-      font-size: 14px;
+      text-transform: uppercase;
+      transition: color 180ms ease;
     }
 
+    nav a:hover,
+    nav a:focus-visible { color: var(--paper); }
+
+    main { overflow: clip; }
+
     .hero {
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 8%;
+      width: var(--page);
+      min-height: calc(100svh - 76px);
+      margin: 0 auto;
+      padding: clamp(4rem, 9vw, 9rem) 0 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(15rem, 28rem);
+      grid-template-rows: auto 1fr auto;
+      column-gap: clamp(2rem, 7vw, 8rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-kicker {
+      grid-column: 1 / -1;
+      margin: 0 0 clamp(2rem, 6vh, 5rem);
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: clamp(55px, 9vw, 140px);
-      font-weight: 400;
       margin: 0;
-      letter-spacing: -4px;
-    }
-
-    .hero p {
-      max-width: 600px;
-      margin-top: 30px;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .works {
-      padding: 100px 8%;
-    }
-
-    .works h2 {
-      font-size: 16px;
+      max-width: 9ch;
+      align-self: center;
+      font-family: var(--serif);
+      font-size: clamp(4.5rem, 11vw, 11.5rem);
       font-weight: 400;
-      margin-bottom: 50px;
+      letter-spacing: -0.065em;
+      line-height: 0.78;
     }
 
-    footer {
-      padding: 60px 8%;
-      font-size: 14px;
+    h1 span {
+      display: block;
+      margin-left: 0.42em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(241, 237, 228, 0.7);
+    }
+
+    .hero-copy {
+      align-self: end;
+      margin: 0 0 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      line-height: 1.35;
+    }
+
+    .hero-footer {
+      grid-column: 1 / -1;
+      margin-top: clamp(4rem, 10vh, 8rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      color: var(--muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .scroll-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .scroll-mark::before {
+      content: "";
+      width: 2.7rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .works, .about, .contact {
+      width: var(--page);
+      margin: 0 auto;
+      padding: clamp(6rem, 12vw, 12rem) 0;
+    }
+
+    .section-heading {
+      margin: 0 0 clamp(4rem, 8vw, 7rem);
+      display: grid;
+      grid-template-columns: 6rem 1fr;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section-heading span:first-child { color: var(--accent); }
+
+    .work {
+      display: grid;
+      grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
+      gap: clamp(2rem, 7vw, 8rem);
+      align-items: start;
+    }
+
+    .work + .work { margin-top: clamp(8rem, 17vw, 17rem); }
+
+    .work-media {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      background: var(--surface);
+    }
+
+    .work-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(241, 237, 228, 0.12);
+      pointer-events: none;
+    }
+
+    .work-media img,
+    .work-media video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .work-copy {
+      position: sticky;
+      top: 7rem;
+      padding-top: 0.2rem;
+    }
+
+    .work-number {
+      margin: 0 0 3rem;
+      color: var(--accent);
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    .work-title {
+      margin: 0 0 1.3rem;
+      font-family: var(--serif);
+      font-size: clamp(2.7rem, 5vw, 5.8rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.95;
+    }
+
+    .work-meta {
+      margin: 0 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      line-height: 1.9;
+      text-transform: uppercase;
+    }
+
+    .work-description {
+      max-width: 31rem;
+      margin: 0;
+      color: #cbc5ba;
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+      line-height: 1.55;
+    }
+
+    .work-motion {
+      grid-template-columns: minmax(0, 1.2fr) minmax(15rem, 0.55fr);
+    }
+
+    .work-motion .work-media { grid-column: 1; }
+
+    .work-motion .work-copy {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .motion-control {
+      margin-top: 2.2rem;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid var(--muted);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .motion-control:hover,
+    .motion-control:focus-visible {
+      border-color: var(--paper);
+      color: var(--paper);
+    }
+
+    .about {
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 0.55fr 1fr;
+      gap: clamp(3rem, 10vw, 11rem);
+    }
+
+    .about .section-heading {
+      display: block;
+      margin: 0;
+    }
+
+    .about-copy {
+      margin: 0;
+      max-width: 19ch;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.4vw, 4.8rem);
+      letter-spacing: -0.04em;
+      line-height: 1.04;
+    }
+
+    .about-note {
+      max-width: 37rem;
+      margin: 3rem 0 0 auto;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .contact {
+      padding-bottom: 4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-intro {
+      margin: 0 0 clamp(4rem, 9vw, 8rem);
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .contact-links a {
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 9vw, 9rem);
+      letter-spacing: -0.06em;
+      line-height: 0.95;
+      text-decoration: none;
+    }
+
+    .contact-links a::after {
+      content: "↗";
+      margin-left: 0.25em;
+      color: var(--accent);
+      font-family: var(--sans);
+      font-size: 0.24em;
+      vertical-align: top;
+    }
+
+    .contact-links a:hover,
+    .contact-links a:focus-visible { color: var(--accent); }
+
+    .site-footer {
+      width: var(--page);
+      margin: 0 auto;
+      padding: 1.5rem 0 3rem;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    :focus-visible {
+      outline: 1px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    @media (max-width: 820px) {
+      .header-inner { grid-template-columns: 1fr auto; }
+      .edition { display: none; }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+      }
+
+      h1 { font-size: clamp(4rem, 21vw, 8rem); }
+      .hero-copy { margin-top: 5rem; }
+
+      .work, .work-motion { grid-template-columns: 1fr; }
+
+      .work-copy,
+      .work-motion .work-copy {
+        position: static;
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .work-media,
+      .work-motion .work-media {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .work-number { margin-bottom: 1.7rem; }
+      .about { grid-template-columns: 1fr; }
+      .about .section-heading { margin-bottom: 1rem; }
+      .about-note { margin-left: 0; }
+    }
+
+    @media (max-width: 560px) {
+      :root { --page: calc(100vw - 2rem); }
+
+      .header-inner { min-height: 66px; }
+      .artist-name { font-size: 0.68rem; }
+      nav { gap: 0.8rem; }
+      nav a { font-size: 0.6rem; }
+
+      .hero {
+        min-height: calc(100svh - 66px);
+        padding-top: 3.5rem;
+      }
+
+      .hero-footer {
+        align-items: flex-start;
+        gap: 2rem;
+      }
+
+      .section-heading { grid-template-columns: 3.5rem 1fr; }
+
+      .site-footer {
+        gap: 1rem;
+        line-height: 1.6;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to selected works</a>
 
-<header>
-  <div class="artist-name">Cael Khin</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="artist-name" href="#top" aria-label="Cael Khin, back to top">Cael Khin</a>
+      <span class="edition">Digital works, 2025—2026</span>
+      <nav aria-label="Primary navigation">
+        <a href="#works">Works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <nav>
-    <a href="#works">Works</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="page-title">
+      <p class="hero-kicker">Selected digital works · Vol. I</p>
+      <h1 id="page-title">Forms <span>of Emotion</span></h1>
+      <p class="hero-copy">An inquiry into feeling through line, repetition, stillness and movement.</p>
 
-<section class="hero">
-  <h1>Forms of Emotion</h1>
+      <div class="hero-footer" aria-hidden="true">
+        <span class="scroll-mark">Selected works</span>
+        <span>Cael Khin / 2026</span>
+      </div>
+    </section>
 
-  <p>
-    Minimalist digital art exploring emotion through line,
-    form, stillness and movement.
-  </p>
-</section>
+    <section class="works" id="works" aria-labelledby="works-heading">
+      <h2 class="section-heading" id="works-heading">
+        <span>01</span>
+        <span>Selected works</span>
+      </h2>
 
-<section class="works" id="works">
-  <h2>SELECTED WORKS</h2>
+      <article class="work">
+        <div class="work-copy">
+          <p class="work-number">Work No. 01</p>
+          <h3 class="work-title">Atom</h3>
+          <p class="work-meta">2025 · Digital drawing</p>
+          <p class="work-description">
+            A field of wandering lines gathers into a single restless form—an intimate map of emotion, movement and inner density.
+          </p>
+        </div>
 
-<img
-  src="images/artwork-01.png"
-  alt="Artwork 01"
-  style="width: 100%; max-width: 900px; height: auto; display: block;"
->
-  <div style="margin-top: 24px; margin-bottom: 120px; max-width: 700px;">
-  <h3 style="font-size: 28px; font-weight: 400; margin: 0 0 10px 0;">
-    ATOM
-  </h3>
+        <figure class="work-media">
+          <img
+            src="images/artwork-01.png"
+            alt="Atom, an abstract composition of fine black looping lines on a white field"
+            width="1719"
+            height="2097"
+            loading="eager"
+          >
+        </figure>
+      </article>
 
-  <p style="font-size: 14px; line-height: 1.7; margin: 0;">
-    2025<br>
-    Digital drawing<br>
-    A minimalist exploration of emotion, movement, and form.
-  </p>
-</div>
-  </div>
+      <article class="work work-motion">
+        <div class="work-media">
+          <video
+            id="motion-artwork"
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+            aria-label="Thoughts Without Rest, a looping digital motion artwork"
+          >
+            <source src="videos/artwork-02.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+        </div>
 
-<!-- Artwork 2 -->
-<video
-  autoplay
-  loop
-  muted
-  playsinline
-  style="width: 100%; max-width: 900px; height: auto; display: block;"
->
-  <source src="videos/artwork-02.mp4" type="video/mp4">
-</video>
+        <div class="work-copy">
+          <p class="work-number">Work No. 02</p>
+          <h3 class="work-title">Thoughts Without Rest</h3>
+          <p class="work-meta">2026 · Digital motion artwork</p>
+          <p class="work-description">
+            Repeating lines circle, overlap and drift without resolution, reflecting the continuous movement of thought.
+          </p>
+          <button class="motion-control" id="motion-control" type="button" aria-controls="motion-artwork">
+            Pause motion
+          </button>
+        </div>
+      </article>
+    </section>
 
-<div style="margin-top: 24px; margin-bottom: 120px; max-width: 700px;">
-  <h3 style="font-size: 28px; font-weight: 400; margin: 0 0 10px 0;">
-    Thoughts Without Rest
-  </h3>
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <h2 class="section-heading" id="about-heading">
+        <span>02</span><br>
+        <span>About</span>
+      </h2>
 
-  <p style="font-size: 14px; line-height: 1.7; margin: 0;">
-    2026<br>
-    Digital motion artwork<br>
-    Repeating lines circle, overlap and drift without resolution, reflecting the restless movement of thought.
-  </p>
-</div>
+      <div>
+        <p class="about-copy">Cael Khin explores the shapes that feeling leaves behind.</p>
+        <p class="about-note">
+          Working across digital drawing and motion, the practice reduces emotion to its quietest elements: line, rhythm, space and repetition.
+        </p>
+      </div>
+    </section>
 
-</section>
-</section>
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <h2 class="contact-intro" id="contact-heading">03 · Contact and studio</h2>
+      <div class="contact-links">
+        <a href="mailto:bandeddie027@gmail.com">Email</a>
+        <a href="https://x.com/cael_khin?s=11" target="_blank" rel="noopener noreferrer">X</a>
+      </div>
+    </section>
+  </main>
 
-<footer id="contact">
-  <h2>Contact</h2>
+  <footer class="site-footer">
+    <span>© 2026 Cael Khin</span>
+    <span>Forms of Emotion</span>
+  </footer>
 
-  <a href="mailto:bandeddie027@gmail.com">Gmail</a>
-  <br>
+  <script>
+    const video = document.getElementById("motion-artwork");
+    const control = document.getElementById("motion-control");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  <a href="https://x.com/cael_khin?s=11" target="_blank">X</a>
-  <br>
+    function setVideoState(shouldPlay) {
+      if (shouldPlay) {
+        video.play().then(function () {
+          control.textContent = "Pause motion";
+          control.setAttribute("aria-pressed", "false");
+        }).catch(function () {
+          control.textContent = "Play motion";
+          control.setAttribute("aria-pressed", "true");
+        });
+      } else {
+        video.pause();
+        control.textContent = "Play motion";
+        control.setAttribute("aria-pressed", "true");
+      }
+    }
 
-  © Cael Khin
-</footer>
+    if (reduceMotion.matches) {
+      setVideoState(false);
+    }
 
+    control.addEventListener("click", function () {
+      setVideoState(video.paused);
+    });
+  </script>
 </body>
 </html>
