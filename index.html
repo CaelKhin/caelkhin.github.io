@@ -61,6 +61,23 @@
 
     .skip-link:focus { transform: translateY(0); }
 
+    .opening-artwork {
+      margin: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .opening-artwork img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
@@ -574,6 +591,12 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to selected works</a>
 
+  <figure class="opening-artwork" id="top">
+    <img src="images/opening-artwork.jpg"
+      alt="Colorful looping line drawings of playful organic creatures on a white field"
+      width="1448" height="2048" loading="eager" fetchpriority="high" decoding="async">
+  </figure>
+
   <header class="site-header">
     <div class="header-inner">
       <a class="artist-name" href="#top" aria-label="Cael Khin, back to top">Cael Khin</a>
@@ -587,7 +610,7 @@
   </header>
 
   <main id="main-content">
-    <section class="hero" id="top" aria-labelledby="page-title">
+    <section class="hero" aria-labelledby="page-title">
       <p class="hero-kicker">Selected digital works · Vol. I</p>
       <h1 id="page-title">Forms <span>of Emotion</span></h1>
       <p class="hero-copy">An inquiry into feeling through line, repetition, stillness and movement.</p>
